@@ -1,0 +1,21 @@
+en:
+  meta:
+
+    # in general you use either prefx or suffix
+    # prefix or suffix are not applied on default title
+    prefix: "My Website - " # Optional
+    suffix: " - My Website" # Optional
+
+    # default meta used if no meta are found for a page
+    default:
+      title: My WebSite
+      description: My super website is about something magnificent
+      keywords: "website, some keywords"
+
+    # Exemple of meta for the controller home and the action index
+    # title, description and keywords are optional
+    home:
+      index:
+        title: Home
+        description: Description of homepage
+        keywords: home
