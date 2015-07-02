@@ -1,4 +1,9 @@
-module JTRailsMeta
+module JT
+	module Rails
+	end
+end
+
+module JT::Rails::Meta
 	extend ActiveSupport::Concern
 
 	include ActionView::Helpers::TagHelper

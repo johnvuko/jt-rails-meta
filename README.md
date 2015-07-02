@@ -18,11 +18,11 @@ Create a `meta.yml` file for the translation:
 
 ### Basic usage
 
-Include `JTRailsMeta` in your `ApplicationController`:
+Include `JT::Rails::Meta` in your `ApplicationController`:
 
 ```ruby
 class ApplicationController < ActionController::Base
-	include JTRailsMeta
+	include JT::Rails::Meta
 	...
 end
 ```
