@@ -1,5 +1,7 @@
 # JTRailsMeta
 
+[![Gem Version](https://badge.fury.io/rb/jt-rails-meta.svg)](http://badge.fury.io/rb/jt-rails-meta)
+
 JTRailsMeta help you to manage HTML meta tags like title, description, keywords used in Search Engine Optimization (SEO).
 
 ## Installation
@@ -10,9 +12,9 @@ Include the gem in your Gemfile:
 
     gem 'jt-rails-meta', '~> 1.0'
 
-Create a `meta.yml` file for the translation:
+Create a `meta.yml` file for the translations:
 
-	rails g rails_meta:install
+	rails g jt:meta
 
 ## Usage
 
