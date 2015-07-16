@@ -59,11 +59,12 @@ module JT::Rails::Meta
 	# +options+:: options passed to I18n
 	def set_meta_title(options = {})
 		@meta[:title] = I18n.translate("#{meta_key}.title", options)
-		
-		if !have_translation?(@meta[:title])
-			@meta[:title] = I18n.translate('meta.default.title')
-		else
+
+		if have_translation?(@meta[:title])
 			@meta[:title] = "#{@meta[:prefix]}#{I18n.translate("#{meta_key}.title", options)}#{@meta[:suffix]}"
+		else
+			@meta[:title] = I18n.translate("#{meta_key}.full_title", options)
+			@meta[:title] = I18n.translate('meta.default.title') if !have_translation?(@meta[:title])
 		end
 		
 		@meta[:title]

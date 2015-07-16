@@ -43,6 +43,40 @@ Call `meta_tags` in your layout:
 
 You have also access to `meta_title`, `meta_description`, `meta_keywords` methods.
 
+Define your meta in `meta.yml` file:
+
+```yaml
+en:
+  meta:
+    # in general you use either prefx or suffix for the title of your page
+    # prefix or suffix are not applied on default title and are both optional
+    prefix: "My Website - "
+    suffix: " - My Website"
+
+    # default meta used if no meta are found for a page
+    default:
+      title: My WebSite
+      description: My super website is about something magnificent
+      keywords: "website, some keywords"
+
+    # Exemple of meta for the controller users and the action new
+    # title, full_title, description and keywords are all optional
+    users:
+      new:
+        title: Sign up
+        description: Description of sign up page
+        keywords: "sign up, registration"
+
+    # Another example for the controller home and the action index
+    # full_title is used if exceptionally you don't want to use the prefix or suffix
+    # you can use either title or full_title
+    home:
+      index:
+        full_title: Home
+        description: Description of homepage
+
+```
+
 ### Pass parameters to tags
 
 In your controller:
