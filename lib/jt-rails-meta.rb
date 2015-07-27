@@ -136,10 +136,10 @@ module JT::Rails::Meta
 private
 
 	def create_meta_hash
-		@meta = {
-			extra: [],
-			links: []
-		}
+		@meta = HashWithIndifferentAccess.new
+		
+		@meta[:extra] = []
+		@meta[:links] = []
 
 		@meta[:prefix] = I18n.translate('meta.prefix')
 		@meta[:prefix] = "" if !have_translation?(@meta[:prefix])
