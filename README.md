@@ -116,8 +116,8 @@ add_meta_extra {
 			title: meta_title,
 			description: meta_description,
 			image: [
-				http://mywebsite.com/image_1.jpg'),
-				http://mywebsite.com/image_2.jpg')
+				'http://mywebsite.com/image_1.jpg',
+				'http://mywebsite.com/image_2.jpg'
 			]
 		}
 	}
