@@ -3,7 +3,7 @@ Gem::Specification.new do |s|
 	s.summary = "Manage HTML meta tags for SEO in Ruby On Rails"
 	s.description = "JTRailsMeta help you to manage HTML meta tags like title, description, keywords used in Search Engine Optimization (SEO)."
 	s.homepage = 'https://github.com/jonathantribouharet/jt-rails-meta'
-	s.version = '1.0.5'
+	s.version = '1.0.6'
 	s.files = `git ls-files`.split("\n")
 	s.require_paths = ['lib']
 	s.authors = ['Jonathan TRIBOUHARET']

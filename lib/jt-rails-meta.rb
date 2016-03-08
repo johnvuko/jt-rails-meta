@@ -11,7 +11,7 @@ module JT::Rails::Meta
 	included do
 		before_action :create_meta_hash
 
-		helper_method :meta_tags, :meta_title, :meta_description, :meta_keywords
+		helper_method :meta_tags, :meta_title, :meta_description, :meta_keywords, :meta_title_raw
 	end
 
 	# Generate HTML tags title, description, keywords and others meta
@@ -53,18 +53,25 @@ module JT::Rails::Meta
 		@meta[:keywords] ||= set_meta_keywords
 	end
 
+	# Content of meta title without suffix or prefix
+	def meta_title_raw
+		@meta[:title_raw]
+	end
+
 	# Generate meta title
 	# Use meta.default.title if no meta found for the current controller/action
 	# Params:
 	# +options+:: options passed to I18n
 	def set_meta_title(options = {})
-		@meta[:title] = I18n.translate("#{meta_key}.title", options)
+		@meta[:title_raw] = I18n.translate("#{meta_key}.title", options)
 
-		if have_translation?(@meta[:title])
-			@meta[:title] = "#{@meta[:prefix]}#{I18n.translate("#{meta_key}.title", options)}#{@meta[:suffix]}"
+		if have_translation?(@meta[:title_raw])
+			@meta[:title] = "#{@meta[:prefix]}#{@meta[:title_raw]}#{@meta[:suffix]}"
 		else
 			@meta[:title] = I18n.translate("#{meta_key}.full_title", options)
 			@meta[:title] = I18n.translate('meta.default.title') if !have_translation?(@meta[:title])
+
+			@meta[:title_raw] = @meta[:title]
 		end
 		
 		@meta[:title]
