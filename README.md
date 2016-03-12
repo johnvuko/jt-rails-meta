@@ -88,7 +88,7 @@ class PostsController < ApplicationController
 
 		set_meta_title({ title: @post.title })
 		set_meta_description({ title: @post.title, author: @post.author })
-    add_meta_keywords(@post.tags.map(&:name))
+        add_meta_keywords(@post.tags.map(&:name))
 	end
 end
 ```
