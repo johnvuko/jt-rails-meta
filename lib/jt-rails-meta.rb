@@ -92,8 +92,29 @@ module JT::Rails::Meta
 	# Params:
 	# +options+:: options passed to I18n
 	def set_meta_keywords(options = {})
-		@meta[:keywords] = I18n.translate("#{meta_key}.keywords", options)
-		@meta[:keywords] = I18n.translate('meta.default.keywords') if !have_translation?(@meta[:keywords])
+		keywords = I18n.translate("#{meta_key}.keywords", options)
+		if !have_translation?(keywords)
+			keywords = I18n.translate('meta.default.keywords')
+		end
+
+		if @meta[:keywords].blank?
+			@meta[:keywords] = keywords
+		else
+			@meta[:keywords] << ',' << keywords
+		end
+
+		@meta[:keywords]
+	end
+
+	# Add custom keywords to the meta keywords, must be call before `set_meta_keywords`
+	# Params:
+	# +keywords+:: array of keywords added to the default keywords
+	def add_meta_keywords(keywords)
+		if keywords.is_a?(String)
+			@meta[:keywords] = keywords
+		elsif keywords.is_a?(Array)
+			@meta[:keywords] = keywords.join(',')
+		end
 		@meta[:keywords]
 	end
 

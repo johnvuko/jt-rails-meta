@@ -35,7 +35,7 @@ Call `meta_tags` in your layout:
 <!DOCTYPE html>
 <head>
     <meta charset="UTF-8" />
-	<%= meta_tags %>
+    <%= meta_tags %>
 </head>
 <body>
 </body>
@@ -88,6 +88,7 @@ class PostsController < ApplicationController
 
 		set_meta_title({ title: @post.title })
 		set_meta_description({ title: @post.title, author: @post.author })
+    add_meta_keywords(@post.tags.map(&:name))
 	end
 end
 ```
