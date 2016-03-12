@@ -115,7 +115,8 @@ module JT::Rails::Meta
 		elsif keywords.is_a?(Array)
 			@meta[:keywords] = keywords.join(',')
 		end
-		@meta[:keywords]
+
+		set_meta_keywords
 	end
 
 	# Add meta other than title, description, keywords
