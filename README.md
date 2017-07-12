@@ -10,7 +10,7 @@ JTRailsMeta is distributed as a gem, which is how it should be used in your app.
 
 Include the gem in your Gemfile:
 
-    gem 'jt-rails-meta', '~> 1.0'
+	gem 'jt-rails-meta', '~> 1.0'
 
 Create a `meta.yml` file for the translations:
 
@@ -34,8 +34,8 @@ Call `meta_tags` in your layout:
 ```html
 <!DOCTYPE html>
 <head>
-    <meta charset="UTF-8" />
-    <%= meta_tags %>
+	<meta charset="UTF-8" />
+	<%= meta_tags %>
 </head>
 <body>
 </body>
@@ -83,13 +83,13 @@ In your controller:
 
 ```ruby
 class PostsController < ApplicationController
-	def show
-		@post = Post.find(params[:id])
+  def show
+    @post = Post.find(params[:id])
 
-		set_meta_title({ title: @post.title })
-		set_meta_description({ title: @post.title, author: @post.author })
-        add_meta_keywords(@post.tags.map(&:name))
-	end
+    set_meta_title({ title: @post.title })
+    set_meta_description({ title: @post.title, author: @post.author })
+    add_meta_keywords(@post.tags.map(&:name))
+  end
 end
 ```
 
