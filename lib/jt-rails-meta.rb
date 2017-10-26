@@ -18,21 +18,21 @@ module JT::Rails::Meta
 	def meta_tags
 		output = ""
 
-		output += content_tag 'title', meta_title
-		output += "\n"
-		output += tag 'meta', name: 'description', content: meta_description
-		output += "\n"
-		output += tag 'meta', name: 'keywords', content: meta_keywords
-		output += "\n"
+		output << content_tag 'title', meta_title
+		output << "\n"
+		output << tag 'meta', name: 'description', content: meta_description
+		output << "\n"
+		output << tag 'meta', name: 'keywords', content: meta_keywords
+		output << "\n"
 
 		for link in @meta[:links]
-			output += tag 'link', link[:options]
-			output += "\n"
+			output << tag 'link', link[:options]
+			output << "\n"
 		end
 
 		for extra_params in @meta[:extra]
-			output += tag 'meta', name: extra_params[:name], content: extra_params[:content]
-			output += "\n"
+			output << tag 'meta', name: extra_params[:name], content: extra_params[:content]
+			output << "\n"
 		end
 
 		output.html_safe
@@ -93,9 +93,8 @@ module JT::Rails::Meta
 	# +options+:: options passed to I18n
 	def set_meta_keywords(options = {})
 		keywords = I18n.translate("#{meta_key}.keywords", options)
-		if !have_translation?(keywords)
-			keywords = I18n.translate('meta.default.keywords')
-		end
+		keywords = I18n.translate('meta.default.keywords') if !have_translation?(keywords)
+		keywords = '' if !have_translation(keywords)
 
 		if @meta[:keywords].blank?
 			@meta[:keywords] = keywords
@@ -144,7 +143,7 @@ module JT::Rails::Meta
 		@meta[:links] << {options: options}
 	end
 
-# Helpers
+	# Helpers
 
 	def add_meta_link_canonical(url)
 		add_meta_link 'canonical', url
