@@ -16,22 +16,22 @@ module JT::Rails::Meta
 
 	# Generate HTML tags title, description, keywords and others meta
 	def meta_tags
-		output = ""
+		output = ''
 
-		output << content_tag 'title', meta_title
+		output << content_tag('title', meta_title)
 		output << "\n"
-		output << tag 'meta', name: 'description', content: meta_description
+		output << tag('meta', name: 'description', content: meta_description)
 		output << "\n"
-		output << tag 'meta', name: 'keywords', content: meta_keywords
+		output << tag('meta', name: 'keywords', content: meta_keywords)
 		output << "\n"
 
 		for link in @meta[:links]
-			output << tag 'link', link[:options]
+			output << tag('link', link[:options])
 			output << "\n"
 		end
 
 		for extra_params in @meta[:extra]
-			output << tag 'meta', name: extra_params[:name], content: extra_params[:content]
+			output << tag('meta', name: extra_params[:name], content: extra_params[:content])
 			output << "\n"
 		end
 
